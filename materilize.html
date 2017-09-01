@@ -1,0 +1,273 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway|Catamaran:700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" /></script>
+    <link rel="stylesheet" href="sass.css">
+
+
+</head>
+
+<body>
+    <div id="entire">
+
+        <div class="navbar-fixed ">
+            <nav style="font-family: 'Raleway', sans-serif;" class="teal">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo center">Weather Whatever....!!!</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="login.html" class="waves-effect waves-light" style="padding-right:10px">Do you care about Global Warming..???</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li class="waves-effect waves-light"><a href="login.html" style="padding-right:10px">Do you care about Global Warming..???</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container white ">
+            <div class="row" style="padding : 20px">
+
+                <div id="locationField">
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <input id="autocomplete" style="font-family: 'Quicksand', sans-serif;" placeholder="Enter the city" type="text" size="80px"></input>
+                </div>
+
+                <script>
+                    function initAutocomplete() {
+                        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                            { types: ['geocode'] });
+                        autocomplete.addListener('place_changed', fillInAddress);
+                    }
+
+                    function fillInAddress() {
+                        // Get the place details from the autocomplete object.
+                        console.log(autocomplete);
+                        var place = autocomplete.getPlace();
+                        console.log(place.name);
+                        dos(place.name);
+                    }
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdruMOTGdf5lqKk7pkkcDuaJgS4UmR77k&libraries=places&callback=initAutocomplete"
+                    async defer></script>
+
+                <script>
+                    $(document).ready(function () {
+                        $("input").click(function () {
+                            $("#hide1").fadeIn();
+                        });
+                    });
+                </script>
+
+                <div class="hide1" id="whole" style="font-family: 'Quicksand', sans-serif;">
+                    <br>
+                    <ul class="tabs">
+                        <li class="tab col s4"><a class="active  teal-text" style="font-size:20px" href="#weather">weather</a></li>
+                        <li class="tab col s4"><a class="teal-text" style="font-size:20px" href="#Air_Pollution">Air Pollution(beta)</a></li>
+                        <li class="tab col s4"><a class="teal-text" style="font-size:20px" href="#map">Maps</a></li>
+                    </ul>
+                    <div id="weather">
+                        <br>
+                        <br>
+                        <div class="center">
+                            <span style="font-size: 30px" id="location"></span><span style="font-size: 30px"> , </span>
+                            <span style="font-size: 30px" id="state"></span><br>
+                            <span><img id = "icon" width="60px"/></span><span class="center-align" style="font-size: 50px"
+                                id="temp"></span><br>
+                            <div style="font-size: 20px" id="des"></div>
+                        </div>
+                        <br>
+
+                        <div class="col s12 m6 l6">
+
+                            <br> Max temp: <span id="max"></span><br> Min temp: <span id="min"></span>
+                            <p style="font-family: 'Catamaran', sans-serif;">
+
+                            </p>
+                            <p>
+                                Wind Speed: <span id="wind"></span><span id="dir"></span><br> Humidity: <span id="humidity"><br>
+                            
+
+                        </p>
+                        Pressure: <span id="pressure"></span><br> Clouds: <span id="Clouds"></span><br> Sunrise: <span id="sunset"></span><br>Sunset:
+                                <span id="sunrise"></span><br> Moonrise: <span id="moonrise"></span><br>Moonset: <span id="moonset"></span>
+                                <br> Visibility: <span id="visibility"></span>
+
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                <br>
+                                <div class="col s12 m4 l4">
+                                    <canvas id="UV"></canvas>
+                                </div>
+                                <div class="col s12 m4 l4">
+                                    <canvas id="hum"></canvas>
+                                </div>
+                                <div class="col s12 m4 l4">
+                                    <canvas id="cl"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <br>
+                        <br>
+                        <hr>
+                        <br>
+                        <div style="padding-right: 10px">
+                            <div style="font-family: 'Quicksand', sans-serif;">
+                                <h4 class="center">Hourly Forecast</h4>
+                                <canvas id="myChart"></canvas>
+                                <br>
+                                <hr>
+                                <br>
+                                <br><br>
+                                <h4 class="center">Daily Forecast</h4>
+                                <canvas id="myChart1"></canvas>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <br>
+
+
+                    </div>
+                </div>
+
+                <div id="map">
+                    <br>
+                    <br>
+                    <h4 class="center">Map from openweathermap.org</h4>
+                    <iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=pressure&lat=25.21&lon=-75&zoom=8" height=100%
+                        width=100%>
+                    </iframe>
+                </div>
+                <br>
+                <br>
+                <div style="font-family: 'Quicksand', sans-serif;" id="Air_Pollution">
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">OZONE : <span id="ozone"></span></span>
+                                    <p>The ozone molecule (O3) is harmful to air quality, outside of the ozone layer. EPA regulations
+                                        help states reduce ozone levels in their outdoor air.</p>
+                                    Ground level or "bad" ozone is not emitted directly into the air, but is created by chemical reactions between oxides of
+                                    nitrogen (NOx) and volatile organic compounds (VOC) in the presence of sunlight. Emissions
+                                    from industrial facilities and electric utilities, motor vehicle exhaust, gasoline vapors,
+                                    and chemical solvents are some of the major sources of NOx and VOC. Breathing ozone can
+                                    trigger a variety of health problems, particularly for children, the elderly, and people
+                                    of all ages who have lung diseases such as asthma. Ground level ozone can also have harmful
+                                    effects on sensitive vegetation and ecosystems.
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Know more</a>
+                                    <a href="#">Symptoms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">CARBON MONOXIDE : <span id="co"></span><br> (calculated at )
+                                    Pressure:
+                                    <span id="atmopr"></span></span>
+                                    <p>Carbon monoxide poisoning is the most common type of fatal air poisoning in many countries.[28]
+                                        Carbon monoxide is colorless, odorless, and tasteless, but highly toxic. It combines
+                                        with hemoglobin to produce carboxyhemoglobin, which usurps the space in hemoglobin
+                                        that normally carries oxygen, but is ineffective for delivering oxygen to bodily
+                                        tissues. Concentrations as low as 667 ppm may cause up to 50% of the body's hemoglobin
+                                        to convert to carboxyhemoglobin.[29] A level of 50% carboxyhemoglobin may result
+                                        in seizure, coma, and fatality. In the United States, the OSHA limits long-term workplace
+                                        exposure levels above 50 ppm.[30] The most common symptoms of carbon monoxide poisoning
+                                        may resemble other types of poisonings and infections, including symptoms such as
+                                        headache, nausea, vomiting, dizziness, fatigue, and a feeling of weakness. Affected
+                                        families often believe they are victims of food poisoning. Infants may be irritable
+                                        and feed poorly. Neurological signs include confusion, disorientation, visual disturbance,
+                                        syncope (fainting), and seizures
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Know more</a>
+                                    <a href="#">Symptoms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">SULPHUR DIOXIDE : <span id="so2"></span><br> (calculated at
+                                    ) Pressure:
+                                    <span id="atmopr_so2"></span></span>
+                                    <p>Carbon monoxide poisoning is the most common type of fatal air poisoning in many countries.[28]
+                                        Carbon monoxide is colorless, odorless, and tasteless, but highly toxic. It combines
+                                        with hemoglobin to produce carboxyhemoglobin, which usurps the space in hemoglobin
+                                        that normally carries oxygen, but is ineffective for delivering oxygen to bodily
+                                        tissues. Concentrations as low as 667 ppm may cause up to 50% of the body's hemoglobin
+                                        to convert to carboxyhemoglobin.[29] A level of 50% carboxyhemoglobin may result
+                                        in seizure, coma, and fatality. In the United States, the OSHA limits long-term workplace
+                                        exposure levels above 50 ppm.[30] The most common symptoms of carbon monoxide poisoning
+                                        may resemble other types of poisonings and infections, including symptoms such as
+                                        headache, nausea, vomiting, dizziness, fatigue, and a feeling of weakness. Affected
+                                        families often believe they are victims of food poisoning. Infants may be irritable
+                                        and feed poorly. Neurological signs include confusion, disorientation, visual disturbance,
+                                        syncope (fainting), and seizures
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Know more</a>
+                                    <a href="#">Symptoms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">NITOGEN DIOXIDE: <span id="no"></span></span>
+                                    <p>The ozone molecule (O3) is harmful to air quality, outside of the ozone layer. EPA regulations
+                                        help states reduce ozone levels in their outdoor air.</p>
+                                    Ground level or "bad" ozone is not emitted directly into the air, but is created by chemical reactions between oxides of
+                                    nitrogen (NOx) and volatile organic compounds (VOC) in the presence of sunlight. Emissions
+                                    from industrial facilities and electric utilities, motor vehicle exhaust, gasoline vapors,
+                                    and chemical solvents are some of the major sources of NOx and VOC. Breathing ozone can
+                                    trigger a variety of health problems, particularly for children, the elderly, and people
+                                    of all ages who have lung diseases such as asthma. Ground level ozone can also have harmful
+                                    effects on sensitive vegetation and ecosystems.
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Know more</a>
+                                    <a href="#">Symptoms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <script src="new.js"></script>
+                </div>
+
+</body>
+
+</html>

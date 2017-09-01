@@ -1,0 +1,74 @@
+
+        body{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-blend-mode: overlay;
+        }
+
+        #entire{
+         /* For Safari 5.1 to 6.0 */
+            background: -webkit-linear-gradient(left, rgb(0,128,128,0), rgba(0,128,128,1));
+            background: -moz-linear-gradient(left, rgb(0,128,128,0), rgba(0,128,128,1));
+            background: -o-linear-gradient(left, rgb(0,128,128,0), rgba(0,128,128,1));
+            background: linear-gradient(to left, rgb(0,128,128,0), rgba(0,128,128,1)); /* For Opera 11.1 to 12.0 */
+         /* For Firefox 3.6 to 15 */
+         /* Standard syntax (must be last) */
+        }
+        .container{
+            opacity: 0.9;
+        }
+
+        #UV {
+    position: absolute;
+    margin: auto;
+    width: 10% !important;
+    height: 20% !important;
+        }
+
+            #hum {
+    position: absolute;
+    margin: auto;
+    width: 10% !important;
+    height: 20% !important;
+            }
+
+            #cl {
+    position: absolute;
+    margin: auto;
+    width: 10% !important;
+    height: 20% !important;
+            }
+    .hide1{
+        display: none;
+    }
+
+.col s12 m4 l4{width: 20% ;
+ height: 30%;}
+
+    @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    #hum{
+    margin: auto;
+    width: 20% !important;
+    height: 20% !important;
+    float: right !important;
+
+    }
+
+    #cl {
+    margin: auto;
+    width: 20% !important;
+    height: 10% !important;
+
+     }
+}
+    
