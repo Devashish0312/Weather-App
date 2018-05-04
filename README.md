@@ -18,5 +18,4 @@ session tracking-cookies
 Databases:
 mysql
 
-
-![ScreenShot] (./s.png)
+![ScreenShot](./s.png)
