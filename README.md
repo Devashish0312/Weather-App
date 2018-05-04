@@ -19,4 +19,4 @@ Databases:
 mysql
 
 
-![ScreenShot] (./ScreenShot.png)
+![ScreenShot] (./s.png)
